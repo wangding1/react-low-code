@@ -1,8 +1,8 @@
-
+import Header from "@/components/Common/Header";
 function EditorView() {
   return (
     <div>
-      编辑器
+      <Header />
     </div>
   );
 }
