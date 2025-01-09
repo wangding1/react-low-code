@@ -1,8 +1,19 @@
-function MaterialsHeader() {
+function MaterialsHeader({
+  serialNum,
+  title = "",
+  desc,
+}: {
+  serialNum: number;
+  title: string;
+  desc: string;
+}) {
   return (
     <div className="mb-15">
-      <h2 className="title font-weight-100">标题</h2>
-      <div>内容</div>
+      <h2 className="title font-weight-100">
+        <span>{serialNum}.</span>
+        <span>{title}</span>
+      </h2>
+      <div>{desc}</div>
     </div>
   );
 }

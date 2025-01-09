@@ -1,7 +1,8 @@
 import { defaultStatusMap } from "@/configs/defaultStatus/defaultStatusMap";
 import { create } from "zustand";
 
-export const useStore = create((set) => ({
+export const useMaterial = create((set) => ({
+  currentMaterialCom: "single-select",
   coms: {
     "single-select": defaultStatusMap["single-select"](),
   },

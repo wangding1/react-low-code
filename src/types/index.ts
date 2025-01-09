@@ -5,3 +5,4 @@ export interface DataType {
   updateDate: string;
   id: string;
 }
+export * from "./editProps";
