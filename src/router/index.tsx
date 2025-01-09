@@ -27,6 +27,18 @@ const ContactGroupView = React.lazy(
 const SingleSelect = React.lazy(
   () => import("@/components/SurveyComs/Materials/SelectComs/SingleSelect")
 );
+const MultiSelect = React.lazy(
+  () => import("@/components/SurveyComs/Materials/SelectComs/MultiSelect")
+);
+const OptionSelect = React.lazy(
+  () => import("@/components/SurveyComs/Materials/SelectComs/OptionSelect")
+);
+const MultiPicSelect = React.lazy(
+  () => import("@/components/SurveyComs/Materials/SelectComs/MultiPicSelect")
+);
+const SinglePicSelect = React.lazy(
+  () => import("@/components/SurveyComs/Materials/SelectComs/SinglePicSelect")
+);
 const routes = [
   {
     path: "/",
@@ -45,6 +57,22 @@ const routes = [
           {
             path: "single-select",
             element: LazyLoad(SingleSelect),
+          },
+          {
+            path: "multi-select",
+            element: LazyLoad(MultiSelect),
+          },
+          {
+            path: "option-select",
+            element: LazyLoad(OptionSelect),
+          },
+          {
+            path: "multi-pic-select",
+            element: LazyLoad(MultiPicSelect),
+          },
+          {
+            path: "single-pic-select",
+            element: LazyLoad(SinglePicSelect),
           },
         ],
       },
