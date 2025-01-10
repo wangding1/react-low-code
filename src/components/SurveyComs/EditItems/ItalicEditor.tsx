@@ -1,9 +1,46 @@
-
-function ItalicEditor() {
+import { Button } from "antd";
+import ButtonGroup from "./ButtonGroup";
+import classNames from "classnames";
+import { useMaterial } from "@/store/useMaterial";
+function ItalicEditor({
+  currentStatus,
+  status,
+  configKey,
+}: {
+  currentStatus: number;
+  status: string[];
+  isShow: boolean;
+  configKey: string;
+  editCom: (...args: any) => JSX.Element;
+}) {
+  const store = useMaterial((state) => state);
+  function onclick(value: number) {
+    store.setCurrentStatus(configKey, value);
+  }
   return (
-    <div>
-      ItalicEditor
-    </div>
+    <ButtonGroup
+      title={configKey === "titleItalic" ? "标题斜体" : "描述斜体"}
+      status={status[currentStatus]}
+    >
+      <Button.Group>
+        <Button
+          className={classNames({
+            select: currentStatus === 0,
+          })}
+          onClick={() => onclick(0)}
+        >
+          <span style={{ fontStyle: "italic" }}>I</span>
+        </Button>
+        <Button
+          className={classNames({
+            select: currentStatus === 1,
+          })}
+          onClick={() => onclick(1)}
+        >
+          <span>I</span>
+        </Button>
+      </Button.Group>
+    </ButtonGroup>
   );
 }
 

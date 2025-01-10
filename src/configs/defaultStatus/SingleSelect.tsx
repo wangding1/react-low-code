@@ -9,8 +9,9 @@ import ColorEditor from "@/components/SurveyComs/EditItems/ColorEditor";
 import OptionsEditor from "@/components/SurveyComs/EditItems/OptionsEditor";
 
 import { v4 as uuidv4 } from "uuid";
+import { Status } from "@/types";
 
-export default function () {
+export default function (): Status {
   return {
     type: SingleSelect,
     name: "single-select",

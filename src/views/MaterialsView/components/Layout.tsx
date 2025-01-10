@@ -2,12 +2,12 @@ import { ReactNode, useMemo } from "react";
 import style from "./css/Layout.module.scss";
 import { Outlet } from "react-router-dom";
 import { useMaterial } from "@/store/useMaterial";
+import EditPannel from "@/components/SurveyComs/EditItems/EditPannel";
 function Layout({ children }: { children: ReactNode }) {
   const store = useMaterial();
-
   let currentCom = useMemo(() => {
-    return store.coms[store.currentCom];
-  }, [store.currentCom]);
+    return store.coms[store.currentMaterialCom];
+  }, [store.currentMaterialCom]);
   return (
     <div className={style.layoutContainer + " flex"}>
       <div className={style.left + " flex wrap space-between"}>{children}</div>
@@ -19,7 +19,9 @@ function Layout({ children }: { children: ReactNode }) {
           }}
         ></Outlet>
       </div>
-      <div className={style.right}></div>
+      <div className={style.right}>
+        <EditPannel com={currentCom} />
+      </div>
     </div>
   );
 }

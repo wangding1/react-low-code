@@ -1,7 +1,7 @@
 export interface BaseProps {
   id: string;
   isShow: boolean;
-  editCom: () => JSX.Element;
+  editCom: (...args: any) => JSX.Element;
   name: string;
   isUse?: boolean;
 }
@@ -43,7 +43,7 @@ export interface BaseStatus {
 }
 
 export interface TypeStatus extends BaseStatus {
-  type: OptionsProps
+  type: OptionsProps;
 }
 
 export interface OptionsStatus extends BaseStatus {
