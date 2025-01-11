@@ -13,10 +13,12 @@ export const useMaterial = create<{
   removeOption: (key: string, index: number) => void;
   setOption: (key: string, index: number, value: string) => void;
   setCurrentStatus: (key: string, value: number) => void;
+  setCurrentSurveyCom: (currentMaterialCom: Material) => void;
 }>((set) => ({
   currentMaterialCom: "single-select" as Material,
   coms: {
     "single-select": defaultStatusMap["single-select"](),
+    "multi-select": defaultStatusMap["multi-select"](),
   },
   setTextStatus: (key: string, text: string) => {
     set((state) => {
@@ -33,7 +35,7 @@ export const useMaterial = create<{
       let currentCom = state.coms[state.currentMaterialCom];
       const option = currentCom.status[key];
       (option.status as StringStatusArr).push(
-        "新增选项" + currentCom.status[key].status.length
+        "新增选项" + (currentCom.status[key].status.length + 1)
       );
       return {
         coms: { ...state.coms, [state.currentMaterialCom]: currentCom },
@@ -70,4 +72,5 @@ export const useMaterial = create<{
       };
     });
   },
+  setCurrentSurveyCom: (currentMaterialCom) => set({ currentMaterialCom }),
 }));
