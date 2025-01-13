@@ -19,6 +19,7 @@ export const useMaterial = create<{
   coms: {
     "single-select": defaultStatusMap["single-select"](),
     "multi-select": defaultStatusMap["multi-select"](),
+    "option-select": defaultStatusMap["option-select"](),
   },
   setTextStatus: (key: string, text: string) => {
     set((state) => {

@@ -54,7 +54,7 @@ function MultiSelect() {
         titleColor={computedState.titleColor}
         descColor={computedState.descColor}
       ></MaterialsHeader>
-      <div className="radio-group">
+      <div className="checkbox-group">
         <Checkbox.Group onChange={emitAnswer}>
           {computedState.options?.map((item, index) => {
             return (
