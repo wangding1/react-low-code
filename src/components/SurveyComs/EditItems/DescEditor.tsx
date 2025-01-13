@@ -20,7 +20,7 @@ function DescEditor(props: {
         placeholder="请输入题目说明（选填）"
         onChange={onChange}
         value={props.status}
-        autoSize={{ minRows: 3, maxRows: 5 }}
+        rows={4}
       />
     </div>
   );

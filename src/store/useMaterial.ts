@@ -1,6 +1,7 @@
 import { defaultStatusMap } from "@/configs/defaultStatus/defaultStatusMap";
 import { OptionsProps, Status, StringStatusArr } from "@/types";
 import { Material, TextProps } from "@/types";
+import { isStringArray } from "@/utils";
 import { create } from "zustand";
 
 export const useMaterial = create<{
@@ -34,10 +35,12 @@ export const useMaterial = create<{
   addOption: (key) => {
     set((state) => {
       let currentCom = state.coms[state.currentMaterialCom];
-      const option = currentCom.status[key];
-      (option.status as StringStatusArr).push(
-        "新增选项" + (currentCom.status[key].status.length + 1)
-      );
+      const option = currentCom.status[key] as OptionsProps;
+      if (isStringArray(option.status)) {
+        option.status.push(
+          "新增选项" + (currentCom.status[key].status.length + 1)
+        );
+      }
       return {
         coms: { ...state.coms, [state.currentMaterialCom]: currentCom },
       };
@@ -46,8 +49,8 @@ export const useMaterial = create<{
   removeOption: (key, index) => {
     set((state) => {
       let currentCom = state.coms[state.currentMaterialCom];
-      const option = currentCom.status[key];
-      (option.status as StringStatusArr).splice(index, 1);
+      const option = currentCom.status[key] as OptionsProps;
+      option.status.splice(index, 1);
       return {
         coms: { ...state.coms, [state.currentMaterialCom]: currentCom },
       };
@@ -56,8 +59,8 @@ export const useMaterial = create<{
   setOption: (key, index, value) => {
     set((state) => {
       let currentCom = state.coms[state.currentMaterialCom];
-      const option = currentCom.status[key];
-      (option.status as StringStatusArr)[index] = value;
+      const option = currentCom.status[key] as OptionsProps;
+      option.status[index] = value;
       return {
         coms: { ...state.coms, [state.currentMaterialCom]: currentCom },
       };
