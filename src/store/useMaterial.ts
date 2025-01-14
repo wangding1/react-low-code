@@ -29,6 +29,7 @@ export const useMaterial = create<{
     "multi-select": defaultStatusMap["multi-select"](),
     "option-select": defaultStatusMap["option-select"](),
     "single-pic-select": defaultStatusMap["single-pic-select"](),
+    "multi-pic-select": defaultStatusMap["multi-pic-select"](),
   },
   setTextStatus: (key: string, text: string) => {
     set((state) => {
