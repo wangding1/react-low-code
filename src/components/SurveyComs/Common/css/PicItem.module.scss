@@ -1,0 +1,25 @@
+.container {
+  width: 200px;
+  height: 300px;
+  border: 1px solid var(--font-color-lightest);
+  border-radius: var(--border-radius-md);
+  color: var(--font-color-light);
+}
+.top {
+  width: 100%;
+  height: 200px;
+  background-color: var(--font-color-lightest);
+}
+.bottom {
+  height: 100px;
+  font-size: var(--font-size-lg);
+}
+.desc {
+  font-size: var(--font-size-base);
+  color: var(--font-color-light);
+}
+.avatar {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}

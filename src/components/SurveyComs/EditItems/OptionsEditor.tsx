@@ -24,6 +24,7 @@ function OptionsEditor(props: {
           icon={<MinusOutlined />}
           color="danger"
           variant="solid"
+          size="small"
           onClick={() => removeOption(index)}
         />
       </div>
@@ -47,7 +48,12 @@ function OptionsEditor(props: {
     <div key="id">
       <div className="mb-10">
         <span className="mr-10">题目选项</span>
-        <Button shape="circle" icon={<PlusOutlined />} onClick={addOption} />
+        <Button
+          shape="circle"
+          icon={<PlusOutlined />}
+          onClick={addOption}
+          size="small"
+        />
       </div>
       {ReactNodes}
     </div>

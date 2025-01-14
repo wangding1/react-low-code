@@ -1,7 +1,13 @@
 import { defaultStatusMap } from "@/configs/defaultStatus/defaultStatusMap";
-import { OptionsProps, Status, StringStatusArr } from "@/types";
+import {
+  OptionsProps,
+  PicLink,
+  PicTitleDescStatusArr,
+  Status,
+  StatusArray,
+} from "@/types";
 import { Material, TextProps } from "@/types";
-import { isStringArray } from "@/utils";
+import { isPicTitleDescArray, isStringArray } from "@/utils";
 import { create } from "zustand";
 
 export const useMaterial = create<{
@@ -12,15 +18,17 @@ export const useMaterial = create<{
   setTextStatus: (key: string, text: string) => void;
   addOption: (key: string) => void;
   removeOption: (key: string, index: number) => void;
-  setOption: (key: string, index: number, value: string) => void;
+  setOption: (key: string, index: number, value: StatusArray[0]) => void;
   setCurrentStatus: (key: string, value: number) => void;
   setCurrentSurveyCom: (currentMaterialCom: Material) => void;
+  setPicLinkByIndex: (key: string, payload: PicLink) => void;
 }>((set) => ({
   currentMaterialCom: "single-select" as Material,
   coms: {
     "single-select": defaultStatusMap["single-select"](),
     "multi-select": defaultStatusMap["multi-select"](),
     "option-select": defaultStatusMap["option-select"](),
+    "single-pic-select": defaultStatusMap["single-pic-select"](),
   },
   setTextStatus: (key: string, text: string) => {
     set((state) => {
@@ -37,9 +45,14 @@ export const useMaterial = create<{
       let currentCom = state.coms[state.currentMaterialCom];
       const option = currentCom.status[key] as OptionsProps;
       if (isStringArray(option.status)) {
-        option.status.push(
-          "新增选项" + (currentCom.status[key].status.length + 1)
-        );
+        option.status.push("新增选项" + (option.status.length + 1));
+      }
+      if (isPicTitleDescArray(option.status)) {
+        option.status.push({
+          picTitle: "新增图片标题" + (option.status.length + 1),
+          picDesc: "说明（选填，限30字）",
+          value: "",
+        });
       }
       return {
         coms: { ...state.coms, [state.currentMaterialCom]: currentCom },
@@ -77,4 +90,15 @@ export const useMaterial = create<{
     });
   },
   setCurrentSurveyCom: (currentMaterialCom) => set({ currentMaterialCom }),
+  setPicLinkByIndex: (key, payload) => {
+    set((state) => {
+      let currentCom = state.coms[state.currentMaterialCom];
+      const option = currentCom.status[key] as OptionsProps;
+      (option.status as PicTitleDescStatusArr)[payload.index].value =
+        payload.link;
+      return {
+        coms: { ...state.coms, [state.currentMaterialCom]: currentCom },
+      };
+    });
+  },
 }));

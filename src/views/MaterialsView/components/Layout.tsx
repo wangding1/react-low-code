@@ -9,10 +9,11 @@ function Layout({ children }: { children: ReactNode }) {
   let currentCom = useMemo(() => {
     return store.coms[store.currentMaterialCom];
   }, [store.currentMaterialCom]);
-
   const { pathname } = useLocation();
   useEffect(() => {
-    store.setCurrentSurveyCom(pathname.slice(1) as Material);
+    if(pathname.slice(1) in store.coms){
+      store.setCurrentSurveyCom(pathname.slice(1) as Material);
+    }
   }, [pathname]);
   return (
     <div className={style.layoutContainer + " flex"}>

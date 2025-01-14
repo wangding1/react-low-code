@@ -1,0 +1,7 @@
+.picOption {
+  height: auto;
+  flex-direction: column-reverse;
+}
+.picOption::after{
+  height: 0;
+}
