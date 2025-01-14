@@ -1,5 +1,6 @@
 import { Status } from "@/types";
 import style from "./css/EditPannel.module.scss";
+import React from "react";
 function EditPannel({ com }: { com: Status }) {
   let status = com?.status;
   let ReactNodes = [];
@@ -8,7 +9,7 @@ function EditPannel({ com }: { com: Status }) {
     if (item.isShow) {
       ReactNodes.push(
         <div key={key} className="mb-20">
-          {item.editCom({ ...item, configKey: key })}
+          {React.createElement(item.editCom, { ...item, configKey: key })}
         </div>
       );
     }

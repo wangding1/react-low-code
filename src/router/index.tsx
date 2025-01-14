@@ -39,6 +39,9 @@ const MultiPicSelect = React.lazy(
 const SinglePicSelect = React.lazy(
   () => import("@/components/SurveyComs/Materials/SelectComs/SinglePicSelect")
 );
+const TextInput = React.lazy(
+  () => import("@/components/SurveyComs/Materials/InputComs/TextInput")
+);
 const routes = [
   {
     path: "/",
@@ -77,8 +80,13 @@ const routes = [
         ],
       },
       {
-        path: "input-group",
         element: LazyLoad(InputGroupView),
+        children: [
+          {
+            path: "text-input",
+            element: LazyLoad(TextInput),
+          },
+        ],
       },
       {
         path: "advanced-group",

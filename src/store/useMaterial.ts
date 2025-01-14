@@ -30,6 +30,7 @@ export const useMaterial = create<{
     "option-select": defaultStatusMap["option-select"](),
     "single-pic-select": defaultStatusMap["single-pic-select"](),
     "multi-pic-select": defaultStatusMap["multi-pic-select"](),
+    "text-input": defaultStatusMap["text-input"](),
   },
   setTextStatus: (key: string, text: string) => {
     set((state) => {
