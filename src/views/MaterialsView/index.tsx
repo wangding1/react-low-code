@@ -27,41 +27,6 @@ function MaterialsView() {
               <div>选择</div>
             </NavLink>
             <NavLink
-              to="/input-group"
-              className={style.categoryItem + " " + style.categoryItem2}
-            >
-              <EditOutlined />
-              <div>文本输入</div>
-            </NavLink>
-            <NavLink
-              to="/advanced-group"
-              className={style.categoryItem + " " + style.categoryItem3}
-            >
-              <FileSyncOutlined />
-              <div>高级题型</div>
-            </NavLink>
-            <NavLink
-              to="/note-group"
-              className={style.categoryItem + " " + style.categoryItem4}
-            >
-              <ContainerOutlined />
-              <div>备注说明</div>
-            </NavLink>
-            <NavLink
-              to="/personal-info-group"
-              className={style.categoryItem + " " + style.categoryItem1}
-            >
-              <UserOutlined />
-              <div>个人信息</div>
-            </NavLink>
-            <NavLink
-              to="/contact-group"
-              className={style.categoryItem + " " + style.categoryItem2}
-            >
-              <MessageOutlined />
-              <div>联系方式</div>
-            </NavLink>
-            {/* <NavLink
               to="/text-input"
               className={style.categoryItem + " " + style.categoryItem2}
             >
@@ -95,7 +60,7 @@ function MaterialsView() {
             >
               <MessageOutlined />
               <div>联系方式</div>
-            </NavLink> */}
+            </NavLink>
           </nav>
           <div className={style.coms}>
             <Outlet />
