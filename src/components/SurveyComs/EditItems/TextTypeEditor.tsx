@@ -16,10 +16,10 @@ function WeightEditor({
 }) {
   const store = useMaterial((state) => state);
   function onclick(value: number) {
-    store.setType(configKey, value);
+    store.setType(configKey, value, true);
   }
   return (
-    <ButtonGroup title="文本类型" status={status[currentStatus]}>
+    <ButtonGroup title="说明类型" status={status[currentStatus]}>
       <Button.Group>
         <Button
           className={classNames({

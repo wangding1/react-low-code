@@ -22,6 +22,7 @@ export const useMaterial = create<{
   setCurrentStatus: (key: string, value: number) => void;
   setCurrentSurveyCom: (currentMaterialCom: Material) => void;
   setPicLinkByIndex: (key: string, payload: PicLink) => void;
+  setType: (key: string, value: number, bol?: boolean) => void;
 }>((set) => ({
   currentMaterialCom: "single-select" as Material,
   coms: {
@@ -31,6 +32,7 @@ export const useMaterial = create<{
     "single-pic-select": defaultStatusMap["single-pic-select"](),
     "multi-pic-select": defaultStatusMap["multi-pic-select"](),
     "text-input": defaultStatusMap["text-input"](),
+    "text-note": defaultStatusMap["text-note"](),
   },
   setTextStatus: (key: string, text: string) => {
     set((state) => {
@@ -98,6 +100,36 @@ export const useMaterial = create<{
       const option = currentCom.status[key] as OptionsProps;
       (option.status as PicTitleDescStatusArr)[payload.index].value =
         payload.link;
+      return {
+        coms: { ...state.coms, [state.currentMaterialCom]: currentCom },
+      };
+    });
+  },
+  setType: (key, value, bol = false) => {
+    set((state) => {
+      let currentCom = state.coms[state.currentMaterialCom];
+      const option = currentCom.status[key] as OptionsProps;
+      if (bol && option.currentStatus !== value) {
+        currentCom.status.title.isShow = !currentCom.status.title.isShow;
+        currentCom.status.desc.isShow = !currentCom.status.desc.isShow;
+        currentCom.status.titleSize.isShow =
+          !currentCom.status.titleSize.isShow;
+        currentCom.status.descSize.isShow = !currentCom.status.descSize.isShow;
+        currentCom.status.titleWeight.isShow =
+          !currentCom.status.titleWeight.isShow;
+        currentCom.status.descWeight.isShow =
+          !currentCom.status.descWeight.isShow;
+        currentCom.status.titleItalic.isShow =
+          !currentCom.status.titleItalic.isShow;
+        currentCom.status.descItalic.isShow =
+          !currentCom.status.descItalic.isShow;
+        currentCom.status.titleColor.isShow =
+          !currentCom.status.titleColor.isShow;
+        currentCom.status.descColor.isShow =
+          !currentCom.status.descColor.isShow;
+        currentCom.status.position.isShow = !currentCom.status.position.isShow;
+      }
+      option.currentStatus = value;
       return {
         coms: { ...state.coms, [state.currentMaterialCom]: currentCom },
       };

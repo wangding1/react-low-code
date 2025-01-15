@@ -42,6 +42,9 @@ const SinglePicSelect = React.lazy(
 const TextInput = React.lazy(
   () => import("@/components/SurveyComs/Materials/InputComs/TextInput")
 );
+const TextNote = React.lazy(
+  () => import("@/components/SurveyComs/Materials/NoteComs/TextNote")
+);
 const routes = [
   {
     path: "/",
@@ -89,12 +92,16 @@ const routes = [
         ],
       },
       {
-        path: "advanced-group",
         element: LazyLoad(AdvancedGroupView),
       },
       {
-        path: "note-group",
         element: LazyLoad(NoteGroup),
+        children: [
+          {
+            path: "text-note",
+            element: LazyLoad(TextNote),
+          },
+        ],
       },
       {
         path: "personal-info-group",
