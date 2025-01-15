@@ -2,13 +2,14 @@ import { Button } from "antd";
 import ButtonGroup from "./ButtonGroup";
 import classNames from "classnames";
 import { useMaterial } from "@/store/useMaterial";
+import { StringStatusArr } from "@/types";
 function PositionEditor({
   currentStatus,
   status,
   configKey,
 }: {
   currentStatus: number;
-  status: string[];
+  status: StringStatusArr;
   isShow: boolean;
   configKey: string;
   editCom: (...args: any) => JSX.Element;

@@ -1,9 +1,10 @@
 import { useMaterial } from "@/store/useMaterial";
+import { StringStatusArr } from "@/types";
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Input, message } from "antd";
 
 function OptionsEditor(props: {
-  status: string[];
+  status: StringStatusArr;
   isShow: boolean;
   configKey: string;
   editCom: (...args: any) => JSX.Element;

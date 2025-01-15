@@ -74,3 +74,13 @@ export function getValueStatus(props: OptionsProps) {
     return props.status;
   }
 }
+
+export function getValueStatusByCurrentStatus(props: OptionsProps) {
+  if (
+    props &&
+    isOptionsProps(props) &&
+    (isValueStatusArray(props.status) || isPicTitleDescArray(props.status))
+  ) {
+    return props.status[props.currentStatus];
+  }
+}

@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import HomeView from "@/views/HomeView";
 import LazyLoad from "./LazyLoad";
 import React from "react";
+import { D } from "node_modules/react-router/dist/development/fog-of-war-BhhVTjSZ.d.mts";
 
 const EditorView = React.lazy(() => import("@/views/EditorView"));
 const MaterialsView = React.lazy(() => import("@/views/MaterialsView"));
@@ -45,6 +46,13 @@ const TextInput = React.lazy(
 const TextNote = React.lazy(
   () => import("@/components/SurveyComs/Materials/NoteComs/TextNote")
 );
+const RateScore = React.lazy(
+  () => import("@/components/SurveyComs/Materials/AdvancedComs/RateScore")
+);
+const DateTime = React.lazy(
+  () => import("@/components/SurveyComs/Materials/AdvancedComs/DateTime")
+);
+
 const routes = [
   {
     path: "/",
@@ -93,6 +101,16 @@ const routes = [
       },
       {
         element: LazyLoad(AdvancedGroupView),
+        children: [
+          {
+            path: "rate-score",
+            element: LazyLoad(RateScore),
+          },
+          {
+            path: "date-time",
+            element: LazyLoad(DateTime),
+          },
+        ],
       },
       {
         element: LazyLoad(NoteGroup),

@@ -23,6 +23,7 @@ export const useMaterial = create<{
   setCurrentSurveyCom: (currentMaterialCom: Material) => void;
   setPicLinkByIndex: (key: string, payload: PicLink) => void;
   setType: (key: string, value: number, bol?: boolean) => void;
+  setUse: (key: string, value: boolean) => void;
 }>((set) => ({
   currentMaterialCom: "single-select" as Material,
   coms: {
@@ -33,6 +34,8 @@ export const useMaterial = create<{
     "multi-pic-select": defaultStatusMap["multi-pic-select"](),
     "text-input": defaultStatusMap["text-input"](),
     "text-note": defaultStatusMap["text-note"](),
+    "rate-score": defaultStatusMap["rate-score"](),
+    "date-time": defaultStatusMap["date-time"](),
   },
   setTextStatus: (key: string, text: string) => {
     set((state) => {
@@ -130,6 +133,16 @@ export const useMaterial = create<{
         currentCom.status.position.isShow = !currentCom.status.position.isShow;
       }
       option.currentStatus = value;
+      return {
+        coms: { ...state.coms, [state.currentMaterialCom]: currentCom },
+      };
+    });
+  },
+  setUse: (key, value) => {
+    set((state) => {
+      let currentCom = state.coms[state.currentMaterialCom];
+      const option = currentCom.status[key] as OptionsProps;
+      option.isUse = value;
       return {
         coms: { ...state.coms, [state.currentMaterialCom]: currentCom },
       };

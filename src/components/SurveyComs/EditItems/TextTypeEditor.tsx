@@ -3,13 +3,14 @@ import ButtonGroup from "./ButtonGroup";
 import classNames from "classnames";
 import { useMaterial } from "@/store/useMaterial";
 import { ExceptionOutlined, FileDoneOutlined } from "@ant-design/icons";
+import { StringStatusArr } from "@/types";
 function WeightEditor({
   currentStatus,
   status,
   configKey,
 }: {
   currentStatus: number;
-  status: string[];
+  status: StringStatusArr;
   isShow: boolean;
   configKey: string;
   editCom: (...args: any) => JSX.Element;

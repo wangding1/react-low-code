@@ -15,6 +15,7 @@ function Layout({ children }: { children: ReactNode }) {
       store.setCurrentSurveyCom(pathname.slice(1) as Material);
     }
   }, [pathname]);
+  console.log("currentCom", currentCom);
   return (
     <div className={style.layoutContainer + " flex"}>
       <div className={style.left + " flex wrap space-between"}>{children}</div>
