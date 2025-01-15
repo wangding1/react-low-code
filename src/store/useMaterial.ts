@@ -7,8 +7,40 @@ import {
   StatusArray,
 } from "@/types";
 import { Material, TextProps } from "@/types";
-import { isPicTitleDescArray, isStringArray } from "@/utils";
+import {
+  isPicTitleDescArray,
+  isStringArray,
+  updateInitStatusBeforeAdd,
+} from "@/utils";
 import { create } from "zustand";
+
+const keysToInitialize = [
+  "personal-info-tel",
+  "personal-info-wechat",
+  "personal-info-qq",
+  "personal-info-email",
+  "personal-info-address",
+  "personal-info-name",
+  "personal-info-id",
+  "personal-info-gender",
+  "personal-info-age",
+  "personal-info-education",
+  "personal-info-career",
+  "personal-info-birth",
+  "personal-info-collage",
+  "personal-info-major",
+  "personal-info-industry",
+  "personal-info-company",
+  "personal-info-position",
+] as Material[];
+
+const initializedStates: { [key: string]: Status } = {};
+
+keysToInitialize.forEach((key) => {
+  const defaultStatus = defaultStatusMap[key]();
+  updateInitStatusBeforeAdd(defaultStatus, key);
+  initializedStates[key] = defaultStatus;
+});
 
 export const useMaterial = create<{
   currentMaterialCom: Material;
@@ -36,6 +68,23 @@ export const useMaterial = create<{
     "text-note": defaultStatusMap["text-note"](),
     "rate-score": defaultStatusMap["rate-score"](),
     "date-time": defaultStatusMap["date-time"](),
+    "personal-info-name": initializedStates["personal-info-name"],
+    "personal-info-id": initializedStates["personal-info-id"],
+    "personal-info-tel": initializedStates["personal-info-tel"],
+    "personal-info-wechat": initializedStates["personal-info-wechat"],
+    "personal-info-qq": initializedStates["personal-info-qq"],
+    "personal-info-email": initializedStates["personal-info-email"],
+    "personal-info-address": initializedStates["personal-info-address"],
+    "personal-info-gender": initializedStates["personal-info-gender"],
+    "personal-info-age": initializedStates["personal-info-age"],
+    "personal-info-education": initializedStates["personal-info-education"],
+    "personal-info-career": initializedStates["personal-info-career"],
+    "personal-info-birth": initializedStates["personal-info-birth"],
+    "personal-info-collage": initializedStates["personal-info-collage"],
+    "personal-info-major": initializedStates["personal-info-major"],
+    "personal-info-industry": initializedStates["personal-info-industry"],
+    "personal-info-company": initializedStates["personal-info-company"],
+    "personal-info-position": initializedStates["personal-info-position"],
   },
   setTextStatus: (key: string, text: string) => {
     set((state) => {

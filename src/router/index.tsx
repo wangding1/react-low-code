@@ -2,7 +2,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import HomeView from "@/views/HomeView";
 import LazyLoad from "./LazyLoad";
-import React from "react";
+import React, { Children } from "react";
 import { D } from "node_modules/react-router/dist/development/fog-of-war-BhhVTjSZ.d.mts";
 
 const EditorView = React.lazy(() => import("@/views/EditorView"));
@@ -122,12 +122,82 @@ const routes = [
         ],
       },
       {
-        path: "personal-info-group",
         element: LazyLoad(PersonalInfoGroupView),
+        children: [
+          {
+            path: "/personal-info-name",
+            element: LazyLoad(TextInput),
+          },
+          {
+            path: "/personal-info-id",
+            element: LazyLoad(TextInput),
+          },
+          {
+            path: "/personal-info-birth",
+            element: LazyLoad(DateTime),
+          },
+          {
+            path: "/personal-info-gender",
+            element: LazyLoad(SingleSelect),
+          },
+          {
+            path: "/personal-info-age",
+            element: LazyLoad(SingleSelect),
+          },
+          {
+            path: "/personal-info-education",
+            element: LazyLoad(SingleSelect),
+          },
+          {
+            path: "/personal-info-collage",
+            element: LazyLoad(TextInput),
+          },
+          {
+            path: "/personal-info-major",
+            element: LazyLoad(TextInput),
+          },
+          {
+            path: "/personal-info-industry",
+            element: LazyLoad(TextInput),
+          },
+          {
+            path: "/personal-info-career",
+            element: LazyLoad(SingleSelect),
+          },
+          {
+            path: "/personal-info-company",
+            element: LazyLoad(TextInput),
+          },
+          {
+            path: "/personal-info-position",
+            element: LazyLoad(TextInput),
+          },
+        ],
       },
       {
-        path: "contact-group",
         element: LazyLoad(ContactGroupView),
+        children: [
+          {
+            path: "/personal-info-tel",
+            element: LazyLoad(TextInput),
+          },
+          {
+            path: "/personal-info-wechat",
+            element: LazyLoad(TextInput),
+          },
+          {
+            path: "/personal-info-qq",
+            element: LazyLoad(TextInput),
+          },
+          {
+            path: "/personal-info-email",
+            element: LazyLoad(TextInput),
+          },
+          {
+            path: "/personal-info-address",
+            element: LazyLoad(TextInput),
+          },
+        ],
       },
     ],
   },
